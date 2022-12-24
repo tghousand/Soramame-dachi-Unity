@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LogicScript : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class LogicScript : MonoBehaviour
     [SerializeField] Image foodBar;
     [SerializeField] Image waterBar;
     [SerializeField] Image funBar;
+    [SerializeField] Button restartButton;
     SoramameScript soramameScript;
     FoodSpawnerScript foodSpawnerScript;
     WaterSpawnerScript waterSpawnerScript;
@@ -71,6 +73,9 @@ public class LogicScript : MonoBehaviour
                 }
             }
         }
+        if(Input.GetKey(KeyCode.Escape)){
+            Application.Quit();
+        }
         
     }
 
@@ -84,6 +89,7 @@ public class LogicScript : MonoBehaviour
         foodBar.fillAmount = 0;
         waterBar.fillAmount = 0;
         funBar.fillAmount = 0;
+        restartButton.gameObject.SetActive(true);
         soramameScript.Flip();
         soramameScript.isDead = true;
         isDead = true;
@@ -99,11 +105,15 @@ public class LogicScript : MonoBehaviour
     }
 
     public void Feed(){
-        foodBar.fillAmount += 10f;
+        foodBar.fillAmount += .1f;
     }
 
     public void Water(){
-        waterBar.fillAmount += 10f;
+        waterBar.fillAmount += .1f;
+    }
+
+    public void Restart(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }
