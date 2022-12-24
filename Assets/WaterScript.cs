@@ -29,7 +29,7 @@ public class WaterScript : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D collision){
-        if(collision.gameObject.tag == "Soramame"){
+        if(collision.gameObject.tag == "Soramame" && !drank){
             slurpSound.Play();
             drank = true;
             waterRenderer.enabled = false;

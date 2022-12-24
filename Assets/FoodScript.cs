@@ -30,7 +30,7 @@ public class FoodScript : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D collision){
-        if(collision.gameObject.tag == "Soramame"){
+        if(collision.gameObject.tag == "Soramame" && !eaten){
             eaten = true;
             feed = true;
             munchSound.Play();
